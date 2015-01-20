@@ -48,4 +48,4 @@ trainer.learningRate = 0.01
 --   dataset[i] = {input, output}
 -- end
 
-trainer:train(trainset)
+-- trainer:train(trainset)
