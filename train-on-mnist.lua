@@ -15,9 +15,9 @@
 -- Clement Farabet
 ----------------------------------------------------------------------
 
-require 'torch'
-require 'nn'
-require 'nnx'
+require 'cutorch'
+require 'cunn'
+require 'cunnx'
 require 'optim'
 require 'image'
 require 'dataset-mnist'
@@ -147,14 +147,14 @@ criterion = nn.ClassNLLCriterion()
 ----------------------------------------------------------------------
 -- move to GPU
 --
-
+--[[
 model:cuda()
 auto_model = nn.Sequential()
 auto_model:add(nn.Copy('torch.FloatTensor', 'torch.CudaTensor'))
 auto_model:add(model)
 auto_model:add(nn.Copy('torch.CudaTensor', 'torch.FloatTensor'))
 model = auto_model
-
+--]]
 ----------------------------------------------------------------------
 -- get/create dataset
 --
